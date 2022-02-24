@@ -133,8 +133,8 @@ function addIntern() {
         },
     ])
         .then((newIntern) => {
-            const { internName, internId, internEamil, internSchool } = newIntern
-            let intern = new Intern(internName, internId, internEamil, internSchool)
+            const { internName, internId, internEmail, internSchool } = newIntern
+            let intern = new Intern(internName, internId, internEmail, internSchool)
             teamArray.push(intern)
             createTeam()
         })
@@ -161,48 +161,44 @@ const htmlHead = `
     <title>My Team</title>
 
 </head>
-<body>
-<h1 class="col-12 bg-danger" style="height:100px; color: blue; border-bottom: 2px black; border-style: outset; "><span class="d-flex justify-content-center align-content-center">My Team </span></h1>
+<body style="background-color: rgb(195, 195, 195);">
+<h1 class="col-12 bg-danger" style="height:100px; color: antiquewhite; border-bottom: 4px black; border-style: outset; "><span class="d-flex justify-content-center mt-3">My Team </span></h1>
+    <section class="col-12 d-flex justify-content-center flex-wrap">
 `
 siteArray.push(htmlHead)
 
 teamArray.forEach((element) => {
     let card = `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; border: 2px outset black;">
         <div>
-            <div class="card-top bg-primary" >
-            <h2 class="card-title mb-3" style="border-bottom: 2px black;">${element.name} </h2>
-            <h3 class="card-title mb-3">${element.role}</h3>
-            </div>
-            <a href="mailto:${element.email}" class="card-link">E-mail</a>
+            <div class="card-top bg-primary" style="color: antiquewhite; border-bottom: 3px solid black;" >
+            <h2 class="card-title">${element.name} </h2>
+            <h3 class="card-title pb-3" style="color: antiquewhite;">${element.role}</h3>
+        </div>
+        <div class="card-bottom mx-3">
             <p>Employee Id: ${element.id}</p>
-       
-    `
+            <a href="mailto:${element.email}" class="card-link">E-mail</a>`
+            
+            
     if (`${element.role}` === "Manager") {
-        card +=`
-        <p>Employee Id: ${element.officeNumber}</p>
-        `
+        card +=`<p>Office: ${element.officeNumber}</p>`
     }
     if (`${element.role}` === "Engineer") {
-        card +=`
-        <a href="${element.gitHub}" class="card-link">Github</a>
-        `
+        card +=`<a href="https://www.github.com/${element.gitHub}" class="card-link">Github</a>`
     }
     if (`${element.role}` === "Intern") {
-        card += `
-        <p>Institution: ${element.school}</p>
-        `
+        card += `<p>Institution: ${element.school}</p>`
     }
     card +=`
-    </div>
-    </div>
+        </div>
+        </div>
     </div>
     `
-
     siteArray.push(card)
-
 })
+
 const htmlFoot = `
+</section>
 </body>
 </html> 
 `
