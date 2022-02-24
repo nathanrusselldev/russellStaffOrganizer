@@ -15,6 +15,7 @@
 
     This is a node.js command line application that will allow team manager to create and store a team. The tool uses inquirer to generate user input and then feeds the reponses from the prompts into a website generator. This website generator creates a simple html page that the manager can reference. 
   
+  ![Example of website output.](.index.html)
 
 # Installation Instructions
 
